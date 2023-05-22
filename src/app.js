@@ -1,7 +1,7 @@
 import { debounce } from 'lodash';
 import jQuery from 'jquery';
 import * as bootstrap from 'bootstrap';
-
+import ReactHtmlParser from 'react-html-parser';
 window.$ = jQuery; // workaround for https://github.com/parcel-bundler/parcel/issues/333
 
 import instantsearch from 'instantsearch.js/es';
@@ -97,6 +97,8 @@ const search = instantsearch({
   indexName: 'magento2_default_products',
 });
 
+console.log(search)
+
 // ============ Begin Widget Configuration
 search.addWidgets([
   searchBox({
@@ -134,27 +136,28 @@ search.addWidgets([
   hits({
     container: '#hits',
     templates: {
-      item: `
+      item(item) {
+        return `
         <div>
             <div class="row image-container">
                 <div class="col-md d-flex align-items-end justify-content-center">
-                    <img src="{{image_url}}" alt="{{name}}" style="width: 100%; height:auto" />
+                    <img src="${item.image_url}" alt="${item.name}" style="width: 100%; height:auto" />
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-md">
-                    <h5>{{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}</h5>
+                    <h5>${item.name}</h5>
                 </div>
             </div>
 
             <div class="row mt-2">
                 <div class="col-md">
-                    
+                    ${item.description ?? ''}
                 </div>
             </div>
             <div class="row mt-auto">
               <div class="col-md">
-                <div class="hit-price fw-bold mt-4">\${{price_default}}</div>
+                <div class="hit-price fw-bold mt-4">${'$' + item.price_default}</div>
               </div>
             </div>
             
@@ -164,7 +167,8 @@ search.addWidgets([
                 </div>
             </div>
         </div>
-      `,
+      `;
+      },
     },
     cssClasses: {
       list: 'list-unstyled grid-container',

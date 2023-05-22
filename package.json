@@ -29,7 +29,9 @@
     "instantsearch.js": "^4.49.3",
     "jquery": "^3.6.3",
     "lodash": "^4.17.21",
+    "re": "^0.1.4",
     "react": "^18.2.0",
+    "react-html-parser": "^2.0.2",
     "typesense": "^1.5.0",
     "typesense-instantsearch-adapter": "^2.5.0"
   }
