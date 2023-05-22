@@ -1,0 +1,36 @@
+{
+  "name": "showcase-ecommerce-store",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "parcel index.html --port 3001",
+    "indexer": "node scripts/populateTypesenseIndex.js",
+    "typesenseServer": "docker run -i -p 8108:8108 -v`pwd`/typesense-server-data/:/data typesense/typesense:0.24.0 --data-dir /data --api-key=xyz --listen-port 8108 --enable-cors",
+    "build": "parcel build index.html --public-url https://ecommerce-store.typesense.org",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.1.0",
+    "eslint": "7.28.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-prettier": "3.4.0",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "2.3.1",
+    "sass": "^1.32.13"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.14.6",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.1.0",
+    "dotenv": "^10.0.0",
+    "html-react-parser": "^3.0.16",
+    "instantsearch.js": "^4.49.3",
+    "jquery": "^3.6.3",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "typesense": "^1.5.0",
+    "typesense-instantsearch-adapter": "^2.5.0"
+  }
+}
