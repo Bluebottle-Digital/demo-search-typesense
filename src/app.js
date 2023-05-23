@@ -14,7 +14,6 @@ import {
   sortBy,
   hierarchicalMenu,
   rangeSlider,
-  ratingMenu,
   toggleRefinement,
   hitsPerPage,
   clearRefinements,
@@ -97,8 +96,6 @@ const search = instantsearch({
   indexName: 'magento2_default_products',
 });
 
-console.log(search)
-
 // ============ Begin Widget Configuration
 search.addWidgets([
   searchBox({
@@ -122,6 +119,46 @@ search.addWidgets([
       selectedItem: 'fw-bold text-primary',
     },
   }),
+  refinementList({
+    limit: 10,
+    showMoreLimit: 50,
+    container: '#brand-list',
+    attribute: 'brand',
+    searchable: true,
+    searchablePlaceholder: 'Search brands',
+    showMore: true,
+    sortBy: ['name:asc', 'count:desc'],
+    cssClasses: {
+      searchableInput:
+          'form-control form-control-sm form-control-secondary mb-2 border-light-2',
+      searchableSubmit: 'd-none',
+      searchableReset: 'd-none',
+      showMore: 'btn btn-secondary btn-sm',
+      list: 'list-unstyled',
+      count: 'badge text-dark-2 ms-2',
+      label: 'd-flex align-items-center',
+      checkbox: 'me-2',
+    },
+  }),
+  hierarchicalMenu({
+    container: '#categories-hierarchical-menu',
+    attributes: [
+      'categories.level0',
+    ],
+    cssClasses: {
+      showMore: 'btn btn-secondary btn-sm',
+      list: 'list-unstyled',
+      childList: 'ms-4',
+      count: 'badge text-dark-2 ms-2',
+      link: 'text-dark text-decoration-none',
+      selectedItem: 'text-primary fw-bold',
+      parentItem: 'text-dark fw-bold',
+    },
+  }),
+  rangeSlider({
+    container: '#price-range-slider',
+    attribute: 'price_default',
+  }),
   sortBy({
     container: '#sort-by',
     items: [
@@ -137,6 +174,7 @@ search.addWidgets([
     container: '#hits',
     templates: {
       item(item) {
+        console.log(item)
         return `
         <div>
             <div class="row image-container">

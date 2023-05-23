@@ -41,53 +41,33 @@ module.exports = (async () => {
         facet: true,
       },
       {
-        name: 'categories.lvl0',
+        name: 'categories.level0',
         type: 'string[]',
         facet: true,
       },
       {
-        name: 'categories.lvl1',
-        type: 'string[]',
-        facet: true,
-        optional: true,
-      },
-      {
-        name: 'categories.lvl2',
+        name: 'categories.level1',
         type: 'string[]',
         facet: true,
         optional: true,
       },
       {
-        name: 'categories.lvl3',
+        name: 'categories.level2',
         type: 'string[]',
         facet: true,
         optional: true,
       },
       {
-        name: 'price',
+        name: 'categories.level3',
+        type: 'string[]',
+        facet: true,
+        optional: true,
+      },
+      {
+        name: 'price_default',
         type: 'float',
         facet: true,
-      },
-      {
-        name: 'popularity',
-        type: 'int32',
-        facet: false,
-      },
-      {
-        name: 'free_shipping',
-        type: 'bool',
-        facet: true,
-      },
-      {
-        name: 'rating',
-        type: 'int32',
-        facet: true,
-      },
-      {
-        name: 'vectors',
-        type: 'float[]',
-        num_dim: 384,
-      },
+      }
       // This is a field that exists in the document, but we only want to use it for display purposes and not search purposes.
       // So we can just leave it off the schema, but still send it in the document.
       // These fields are considered un-indexed fields, and stored on disk and returned when the document is a hit.
