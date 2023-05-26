@@ -140,6 +140,27 @@ search.addWidgets([
       checkbox: 'me-2',
     },
   }),
+  refinementList({
+    limit: 10,
+    showMoreLimit: 50,
+    container: '#tags-list',
+    attribute: 'tags_id',
+    searchable: true,
+    searchablePlaceholder: 'Search Tags',
+    showMore: true,
+    sortBy: ['name:asc', 'count:desc'],
+    cssClasses: {
+      searchableInput:
+          'form-control form-control-sm form-control-secondary mb-2 border-light-2',
+      searchableSubmit: 'd-none',
+      searchableReset: 'd-none',
+      showMore: 'btn btn-secondary btn-sm',
+      list: 'list-unstyled',
+      count: 'badge text-dark-2 ms-2',
+      label: 'd-flex align-items-center',
+      checkbox: 'me-2',
+    },
+  }),
   hierarchicalMenu({
     container: '#categories-hierarchical-menu',
     attributes: [
