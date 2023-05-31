@@ -41,6 +41,11 @@ module.exports = (async () => {
         facet: true,
       },
       {
+        name: 'vendor_id',
+        type: 'string',
+        facet: true,
+      },
+      {
         name: 'categories',
         type: 'string[]',
         facet: true,
